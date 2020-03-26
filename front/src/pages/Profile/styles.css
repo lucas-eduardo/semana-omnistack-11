@@ -1,0 +1,256 @@
+@keyframes animateOpen {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes animateClose {
+  from { width: 100%; }
+  to { width: 0; }
+}
+
+.menu-content {
+  width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+  height: 100vh;
+  background: #e2e2e2;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.6);
+}
+
+.menu-content > a {
+  background: transparent;
+  border: 1px solid #e02041;
+  color: #333;
+}
+
+.menu-content > button {
+  height: 60px;
+  border: 0;
+  background: transparent;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-content > button > svg {
+  margin-right: 0.5rem;
+}
+
+.menu-content.animate-open {
+  animation-name: animateOpen;
+  animation-duration: 0.3s;
+  padding: 2rem;
+}
+
+.menu-content.animate-close {
+  animation-name: animateClose;
+  animation-duration: 0.3s;
+  padding: 2rem;
+}
+
+.menu-content.active {
+  width: 100%;
+  padding: 2rem 2rem 7rem 2rem;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 3rem;
+  margin: 3.2rem auto;
+}
+
+.profile-container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-container header .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container header .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container header .left span {
+  font-size: 2rem;
+  margin-left: 2.4rem;
+}
+
+.profile-container header .left img {
+  height: 64px;
+}
+
+.profile-container header .right a {
+  width: 260px;
+  margin-left: auto;
+  margin-top: 0;
+}
+
+.profile-container header .right button {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  border: 1px solid #dcdce6;
+  background: transparent;
+  margin-left: 1.6rem;
+  transition: border-color 0.2s;
+}
+
+.profile-container header .right button:hover {
+  border-color: #999;
+}
+
+.profile-container h1 {
+  margin-top: 8rem;
+  margin-bottom: 2.4rem;
+}
+
+.profile-container ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2.4rem;
+  list-style: none;
+}
+
+.profile-container ul li {
+  background: #fff;
+  padding: 2.4rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.profile-container header .right > button.menu {
+  border: 0;
+  display: none;
+}
+
+.profile-container ul li button {
+  position: absolute;
+  background: transparent;
+  right: 2.4rem;
+  top: 2.4rem;
+  border: 0;
+  transform: opacity .2s;
+}
+
+.profile-container ul li button:hover {
+  opacity: 0.8;
+}
+
+.profile-container ul li strong {
+  display: block;
+  margin-bottom: 1.6rem;
+  color: #41414d;
+}
+
+.profile-container ul li p + strong {
+  margin-top: 3.2rem;
+}
+
+.profile-container ul li p {
+  color: #737380;
+  line-height: 2.1rem;
+  font-size: 1.6rem;
+}
+
+@media (max-width: 732px) {
+  .profile-container header .right > a {
+    width: 210px;
+  }
+
+  .profile-container h1 {
+    margin-top: 6rem;
+  }
+}
+
+@media (max-width: 685px) {
+  .profile-container header .right > a {
+    font-size: 1.7rem;
+    width: 175px;
+  }
+
+  .profile-container h1 {
+    margin-top: 4rem;
+  }
+
+  .profile-container ul li strong,
+  .profile-container ul li p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .profile-container header .right > a {
+    font-size: 1.4rem;
+    width: 150px;
+  }
+}
+
+@media (max-width: 626px) {
+  .profile-container header .right > a,
+  .profile-container header .right > button:not(.menu) {
+    display: none;
+  }
+
+  /* .menu-content {
+    display: inline-block;
+  } */
+
+  .profile-container header {
+    flex-direction: column-reverse;
+  }
+
+  .profile-container header .right > button.menu {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  .profile-container ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 390px) {
+  .profile-container header .left > img {
+    height: 53px;
+  }
+
+  .profile-container header .left > span {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 348px) {
+  .profile-container header .left > img {
+    height: 49px;
+  }
+
+  .profile-container header .left > span {
+    margin-top: 2rem;
+    margin-left: 0;
+    font-size: 1.4rem;
+  }
+
+  .profile-container h1 {
+    margin-top: 3rem;
+  }
+
+  .profile-container ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
