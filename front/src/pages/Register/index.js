@@ -57,7 +57,7 @@ export default function Register() {
         <form noValidate autoComplete="off" onSubmit={handleRegister}>
           <input type="text" placeholder="Nome da ONG" value={name} onChange={e => setName(e.target.value)} />
           <input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} />
-          <InputMask mask="(99) 9.9999-9999" placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)} />
+          <InputMask mask="+99 (99) 9.9999-9999" placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)} />
 
           <div className="input-group">
             <input type="text" placeholder="Cidade" value={city} onChange={e => setCity(e.target.value)} />

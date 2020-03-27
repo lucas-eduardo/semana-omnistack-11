@@ -1,16 +1,25 @@
-### Running the project locally
+<img src="./.github/semanaOmniStack.png" />
+
+# Semana OmniStack 11 - Backend
+
+### Criando o banco SQLite com as tabelas
+
+- `npx knex migrate:latest`
+
+### Rodando o projeto local
 
 - `yarn install`
 
 - `yarn dev`
 
-
-### Building the project for production
+### Buildando o projeto
 
 - `yarn build`
 
-### Running the project in production
+### Rodando o projeto em produção
 
-- `yarn install --production` or `npm install --production`
+- `yarn install --production`
 
-- `yarn start` or `npm start`
+- `npx knex migrate:latest`
+
+- `yarn start`
