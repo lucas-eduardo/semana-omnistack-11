@@ -4,7 +4,7 @@ import request from 'supertest';
 import app from '../../src/app';
 import connection from '../../src/database';
 
-describe('Ongs', () => {
+describe('Profiles', () => {
   beforeAll(async () => {
     await connection.migrate.rollback();
     await connection.migrate.latest();
@@ -14,8 +14,8 @@ describe('Ongs', () => {
     await connection.destroy();
   });
 
-  describe('Store', () => {
-    it('passing the correct parameters, allow registering a new ONG', async () => {
+  describe('Index', () => {
+    it('returns all cases of the logged in user', async () => {
       const json = {
         name: 'APAD',
         email: 'contato@apad.com.br',
@@ -24,26 +24,31 @@ describe('Ongs', () => {
         uf: 'SP',
       };
 
-      const { body, status } = await request(app)
+      const {
+        body: { id },
+      } = await request(app)
         .post('/ongs')
         .send(json);
 
-      expect(status).toBe(200);
-      expect(body).toHaveProperty('id');
-    });
-  });
+      await request(app)
+        .post('/incidents')
+        .set('Authorization', id)
+        .send({
+          title: 'Caso Teste',
+          description: 'Detalhe do caso',
+          value: 450,
+        });
 
-  describe('Index', () => {
-    it('returns all ONGS', async () => {
       const {
-        body: [ong],
+        body: [incident],
         status,
       } = await request(app)
-        .get('/ongs')
+        .get('/profiles')
+        .set('Authorization', id)
         .send();
 
       expect(status).toBe(200);
-      expect(ong).toHaveProperty('id');
+      expect(incident).toHaveProperty('id');
     });
   });
 });

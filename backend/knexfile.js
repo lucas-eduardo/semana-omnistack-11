@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './db.sqlite',
+      filename: './src/database/db.sqlite',
     },
     migrations: {
       directory: './src/database/migrations',
@@ -13,7 +13,7 @@ module.exports = {
   test: {
     client: 'sqlite3',
     connection: {
-      filename: './__tests__/db.sqlite',
+      filename: './__tests__/test.sqlite',
     },
     migrations: {
       directory: './src/database/migrations',

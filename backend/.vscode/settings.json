@@ -4,7 +4,7 @@
     "babel.config.js": true,
     "jest.config.js": true,
     ".editorconfig": true,
-    ".eslintrc.js": true,
+    // ".eslintrc.js": true,
     ".prettierrc": true,
     "yarn.lock": true
   },

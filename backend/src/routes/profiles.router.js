@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Segments, Joi } from 'celebrate';
 
 import profilesController from '../app/controllers/profiles.controller';
 
@@ -10,7 +11,14 @@ class ProfilesRouter {
   }
 
   setRoutes() {
-    this.router.route('/profiles').get(profilesController.index);
+    this.router.route('/profiles').get(
+      celebrate({
+        [Segments.HEADERS]: Joi.object({
+          authorization: Joi.string().required(),
+        }).unknown(),
+      }),
+      profilesController.index
+    );
   }
 }
 

@@ -2,14 +2,24 @@ import 'dotenv';
 import request from 'supertest';
 
 import app from '../../src/app';
+import connection from '../../src/database';
 
 describe('Sessions', () => {
+  beforeEach(async () => {
+    await connection.migrate.rollback();
+    await connection.migrate.latest();
+  });
+
+  afterAll(async () => {
+    await connection.destroy();
+  });
+
   describe('Store', () => {
     it('passing the correct data, allow to login', async () => {
       const json = {
         name: 'APAD',
         email: 'contato@apad.com.br',
-        whatsapp: '15981270952',
+        whatsapp: '5515981270952',
         city: 'Sorocaba',
         uf: 'SP',
       };

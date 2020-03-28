@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import Youch from 'youch';
+import { errors } from 'celebrate';
 
 import 'express-async-errors';
 
@@ -26,13 +27,14 @@ class App {
 
   routes() {
     this.server.use('/', routes);
+    this.server.use(errors());
   }
 
   exceptionHandler() {
     this.server.use(async (err, req, res, next) => {
       if (process.env.NODE_ENV === 'development') {
-        const errors = await new Youch(err, req).toJSON();
-        return res.status(500).json(errors);
+        const error = await new Youch(err, req).toJSON();
+        return res.status(500).json(error);
       }
 
       return res.status(500).json({ error: 'Internal server error' });
